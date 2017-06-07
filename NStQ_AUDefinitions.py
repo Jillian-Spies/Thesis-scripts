@@ -9,8 +9,8 @@ import time
 Start = time.time()
 print 'Start script'
 
-arcpy.env.workspace = r"G:\ArcMap\Merges.gdb"
-fc = "merge_2sp_ch_Diss"
+arcpy.env.workspace = r"G:\ArcMap\Resultant_V1_Final_Thisisit.gdb"
+fc = "res_Finalforeal_V5"
 
 try:
     arcpy.AddField_management(fc, "AU", "LONG")
@@ -57,63 +57,33 @@ with arcpy.da.UpdateCursor(fc, fl) as cursor:
 								row[fdic["AU"]]=200 #was 1
 							elif row[fdic["BEC_VARIANT"]] in ["1","3","4"]:
 								if row[fdic["SITE_INDEX"]] >=17:
-									if 141>row[fdic["Current_Year"]]:
-										row[fdic["AU"]]=201 #was 2
-									elif row[fdic["Current_Year"]]>=141:
-										row[fdic["AU"]]=203 #was 4
+									row[fdic["AU"]]=201 #was 2
 								elif row[fdic["SITE_INDEX"]] <17:
-									if 141>row[fdic["Current_Year"]]:
-										row[fdic["AU"]]=202 #was 3
-									elif row[fdic["Current_Year"]]>=141:
-										row[fdic["AU"]]=204 #was 5
+									row[fdic["AU"]]=202 #was 3
 						elif row[fdic["BEC_SUBZONE"]] == "xh":
 							row[fdic["AU"]]=200 #was 1
 						elif row[fdic["BEC_SUBZONE"]] in ["xw", "xm", "xk", "xc", "xv", "dh", "dw", "dm", "dc", "dv"]:
 							if row[fdic["SITE_INDEX"]] >=17:
-								if 141>row[fdic["Current_Year"]]:
-									row[fdic["AU"]] = 201 #was 2
-								elif row[fdic["Current_Year"]]>=141:
-									row[fdic["AU"]]= 203 # was 4
+								row[fdic["AU"]] = 201 #was 2
 							elif row[fdic["SITE_INDEX"]] <17:
-								if 141>row[fdic["Current_Year"]]:
-									row[fdic["AU"]] = 201 # was 2
-								elif row[fdic["Current_Year"]]>=141:
-										row[fdic["AU"]]= 204 # was 5
+								row[fdic["AU"]] = 202 # was 3
 					elif row[fdic["BEC_ZONE_CODE"]] in ["PP","BG"]:
 						row[fdic["AU"]]= 200 # was 1
 					elif row[fdic["BEC_ZONE_CODE"]] in ["AT", "BWBS", "CWH", "ESSF", "ICH", "MH", "SBPS", "SBS", "SWB", "MS"]:
 						if row[fdic["SITE_INDEX"]] >=17:
-							if 141>row[fdic["Current_Year"]]:
-								row[fdic["AU"]]= 201 # was 2
-							elif row[fdic["Current_Year"]]>=141:
-								row[fdic["AU"]]= 203 # was 4
+							row[fdic["AU"]]= 201 # was 2
 						elif row[fdic["SITE_INDEX"]] <17:
-							if 141>row[fdic["Current_Year"]]:
-								row[fdic["AU"]]= 202 # was 3
-							elif row[fdic["Current_Year"]]>=141:
-								row[fdic["AU"]]= 204 # was 5
+							row[fdic["AU"]]= 202 # was 3
 				elif row[fdic["SPECIES_CD_1"]] in Spruce+Bal+Hem+Cedar:
 					if row[fdic["SITE_INDEX"]] >=15:
-						if 141>row[fdic["Current_Year"]]:
-							row[fdic["AU"]]= 205 # was 6
-						elif row[fdic["Current_Year"]]>=141:
-							row[fdic["AU"]]= 207 # was 8
+						row[fdic["AU"]]= 205 # was 6
 					elif row[fdic["SITE_INDEX"]] <15:
-						if 141>row[fdic["Current_Year"]]:
-							row[fdic["AU"]]= 206 # was 7
-						elif row[fdic["Current_Year"]]>=141:
-							row[fdic["AU"]]= 209 # was 9
+						row[fdic["AU"]]= 206 # was 7
 				elif row[fdic["SPECIES_CD_1"]] in ["PL","PLI","PLC"]:
 					if row[fdic["SITE_INDEX"]] >=16:
-						if 141>row[fdic["Current_Year"]]:
-							row[fdic["AU"]]=10
-						elif row[fdic["Current_Year"]]>=141:
-							row[fdic["AU"]]= 215 # was 16
+						row[fdic["AU"]]=350 #was 10
 					if row[fdic["SITE_INDEX"]] <16:
-						if 141>row[fdic["Current_Year"]]:
-							row[fdic["AU"]]= 214 # was 15
-						elif row[fdic["Current_Year"]]>=141:
-							row[fdic["AU"]]= 216 # was 17
+						row[fdic["AU"]]= 214 # was 15
 				elif row[fdic["SPECIES_CD_1"]] in Aspen+Alder+Birch:
 					row[fdic["AU"]]= 133
 				elif row[fdic["SPECIES_CD_1"]] in ["PA", "PY"]:
@@ -126,131 +96,101 @@ with arcpy.da.UpdateCursor(fc, fl) as cursor:
 									row[fdic["AU"]]= 222 # was 119
 								elif row[fdic["BEC_VARIANT"]] in ["1","3","4"]:
 									if row[fdic["SITE_INDEX"]] >=17:
-										if 141>row[fdic["Current_Year"]]:
-											row[fdic["AU"]]= 223 # was 120
-										elif row[fdic["Current_Year"]]>=141:
-											row[fdic["AU"]]=122
+										row[fdic["AU"]]= 223 # was 120
 									elif row[fdic["SITE_INDEX"]] <17:
-										if 141>row[fdic["Current_Year"]]:
-											row[fdic["AU"]]=121
-										elif row[fdic["Current_Year"]]>=141:
-											row[fdic["AU"]]=123
+										row[fdic["AU"]]=121
 							elif row[fdic["BEC_SUBZONE"]] == "xh":
 								row[fdic["AU"]]=222 # was 119
 							elif row[fdic["BEC_SUBZONE"]] in ["xw", "xm", "xk", "xc", "xv", "dh", "dw", "dm", "dc", "dv"]:
 								if row[fdic["SITE_INDEX"]] >=17:
-									if 141>row[fdic["Current_Year"]]:
-										row[fdic["AU"]] = 223 # was 120
-									elif row[fdic["Current_Year"]]>=141:
-										row[fdic["AU"]]=122
+									row[fdic["AU"]] = 223 # was 120
 								elif row[fdic["SITE_INDEX"]] <17:
-									if 141>row[fdic["Current_Year"]]:
-										row[fdic["AU"]] =121
-									elif row[fdic["Current_Year"]]>=141:
-											row[fdic["AU"]]=123
+									row[fdic["AU"]] =121
 						elif row[fdic["BEC_ZONE_CODE"]] in ["PP","BG"]:
 							row[fdic["AU"]]= 222 # was 119
 						elif row[fdic["BEC_ZONE_CODE"]] in ["AT", "BWBS", "CWH", "ESSF", "ICH", "MH", "SBPS", "SBS", "SWB", "MS"]:
 							if row[fdic["SITE_INDEX"]] >=17:
-								if 141>row[fdic["Current_Year"]]:
-									row[fdic["AU"]]= 223 # was 120
-								elif row[fdic["Current_Year"]]>=141:
-									row[fdic["AU"]]=122
+								row[fdic["AU"]]= 223 # was 120
 							elif row[fdic["SITE_INDEX"]] <17:
-								if 141>row[fdic["Current_Year"]]:
-									row[fdic["AU"]]=121
-								elif row[fdic["Current_Year"]]>=141:
-									row[fdic["AU"]]=123
+								row[fdic["AU"]]=121
 					elif row[fdic["SPECIES_CD_1"]] in Spruce+Bal+Hem+Cedar:
 						if row[fdic["SITE_INDEX"]] >=15:
-							if 141>row[fdic["Current_Year"]]:
-								row[fdic["AU"]]=124
-							elif row[fdic["Current_Year"]]>=141:
-								row[fdic["AU"]]=126
+							row[fdic["AU"]]=124
 						elif row[fdic["SITE_INDEX"]] <15:
-							if 141>row[fdic["Current_Year"]]:
-								row[fdic["AU"]]=125
-							elif row[fdic["Current_Year"]]>=141:
-								row[fdic["AU"]]=127
+							row[fdic["AU"]]=125
 					elif row[fdic["SPECIES_CD_1"]] in ["PL","PLI","PLC"]:
 						if row[fdic["SITE_INDEX"]] >=16:
-							if 141>row[fdic["Current_Year"]]:
-								row[fdic["AU"]]=128
-							elif row[fdic["Current_Year"]]>=141:
-								row[fdic["AU"]]=130
+							row[fdic["AU"]]=128
 						if row[fdic["SITE_INDEX"]] <16:
-							if 141>row[fdic["Current_Year"]]:
-								row[fdic["AU"]]=129
-							elif row[fdic["Current_Year"]]>=141:
-								row[fdic["AU"]]=131
+							row[fdic["AU"]]=129
 					elif row[fdic["SPECIES_CD_1"]] in Aspen+Alder+Birch:
-						row[fdic["AU"]]= 138
+						row[fdic["AU"]]= 133
 					elif row[fdic["SPECIES_CD_1"]] in ["PA", "PY"]:
 						row[fdic["AU"]]= 500
 		elif row[fdic["TSA_NUMBER_DESCRIPTION"]] == "Quesnel TSA":
 			if row[fdic["SPECIES_CD_1"]] in Pine:
 				if row[fdic["BEC_ZONE_CODE"]] in "ESSF" + "ICH":
-					if 5<row[fdic["SITE_INDEX"]]<12:
+					if 5<row[fdic["SITE_INDEX"]]<=12:
 						row[fdic["AU"]]=140
-					elif 12.1<row[fdic["SITE_INDEX"]]<19:
+					elif 12<row[fdic["SITE_INDEX"]]<=19:
 						row[fdic["AU"]]=141
-					elif 19.1<row[fdic["SITE_INDEX"]]<26:
+					elif 19<row[fdic["SITE_INDEX"]]<=26:
 						row[fdic["AU"]]=142
-					elif 26.1<row[fdic["SITE_INDEX"]]:
+					elif 26<row[fdic["SITE_INDEX"]]:
 						row[fdic["AU"]]=143
 				if row[fdic["BEC_ZONE_CODE"]] in "SBS" + "IDF":
-					if 5<row[fdic["SITE_INDEX"]]<12:
+					if 5<row[fdic["SITE_INDEX"]]<=12:
 						row[fdic["AU"]]=164
-					elif 12.1<row[fdic["SITE_INDEX"]]<19:
+					elif 12<row[fdic["SITE_INDEX"]]<=19:
 						row[fdic["AU"]]=165
-					elif 19.1<row[fdic["SITE_INDEX"]]<26:
+					elif 19<row[fdic["SITE_INDEX"]]<=26:
 						row[fdic["AU"]]=166
-					elif 26.1<row[fdic["SITE_INDEX"]]:
+					elif 26<row[fdic["SITE_INDEX"]]:
 						row[fdic["AU"]]=167
 			if row[fdic["SPECIES_CD_1"]] in Spruce:
-				if 5<row[fdic["SITE_INDEX"]]<10:
+				if 5<row[fdic["SITE_INDEX"]]<=10:
 					row[fdic["AU"]]=144
-				elif 10.1<row[fdic["SITE_INDEX"]]<15:
+				elif 10<row[fdic["SITE_INDEX"]]<=15:
 					row[fdic["AU"]]=145
-				elif 15.1<row[fdic["SITE_INDEX"]]<20:
+				elif 15<row[fdic["SITE_INDEX"]]<=20:
 					row[fdic["AU"]]=146
-				elif 20.1<row[fdic["SITE_INDEX"]]:
+				elif 20<row[fdic["SITE_INDEX"]]:
 					row[fdic["AU"]]=147
 			if row[fdic["SPECIES_CD_1"]] in DougFir:
-				if 5<row[fdic["SITE_INDEX"]]<11:
+				if 5<row[fdic["SITE_INDEX"]]<=11:
 					row[fdic["AU"]]=148
-				elif 11.1<row[fdic["SITE_INDEX"]]<17:
+				elif 11<row[fdic["SITE_INDEX"]]<=17:
 					row[fdic["AU"]]=149
-				elif 17.1<row[fdic["SITE_INDEX"]]<23:
+				elif 17<row[fdic["SITE_INDEX"]]<=23:
 					row[fdic["AU"]]=150
-				elif 23.1<row[fdic["SITE_INDEX"]]:
+				elif 23<row[fdic["SITE_INDEX"]]:
 					row[fdic["AU"]]=151
 			if row[fdic["SPECIES_CD_1"]] in HemBal:
-				if 5<row[fdic["SITE_INDEX"]]<11:
+				if 5<row[fdic["SITE_INDEX"]]<=11:
 					row[fdic["AU"]]=152
-				elif 11.1<row[fdic["SITE_INDEX"]]<17:
+				elif 11<row[fdic["SITE_INDEX"]]<=17:
 					row[fdic["AU"]]=153
-				elif 17.1<row[fdic["SITE_INDEX"]]<23:
+				elif 17<row[fdic["SITE_INDEX"]]<=23:
 					row[fdic["AU"]]=154
-				elif 23.1<row[fdic["SITE_INDEX"]]:
+				elif 23<row[fdic["SITE_INDEX"]]:
 					row[fdic["AU"]]=155
 			if row[fdic["SPECIES_CD_1"]] in Decid:
-				if 5<row[fdic["SITE_INDEX"]]<15:
+				if 5<row[fdic["SITE_INDEX"]]<=15:
 					row[fdic["AU"]]=156
-				elif 15.1<row[fdic["SITE_INDEX"]]<20:
+				elif 15<row[fdic["SITE_INDEX"]]<=20:
 					row[fdic["AU"]]=157
-				elif 20.1<row[fdic["SITE_INDEX"]]<25:
+				elif 20<row[fdic["SITE_INDEX"]]<=25:
 					row[fdic["AU"]]=158
-				elif 25.1<row[fdic["SITE_INDEX"]]:
+				elif 25<row[fdic["SITE_INDEX"]]:
 					row[fdic["AU"]]=159
 			if row[fdic["SPECIES_CD_1"]] in Cedar:
-				if 5<row[fdic["SITE_INDEX"]]<11:
+				if 5<row[fdic["SITE_INDEX"]]<=11:
 					row[fdic["AU"]]=160
-				elif 11.1<row[fdic["SITE_INDEX"]]<17:
+				elif 11<row[fdic["SITE_INDEX"]]<=17:
 					row[fdic["AU"]]=161
-				elif 17.1<row[fdic["SITE_INDEX"]]<23:
+				elif 17<row[fdic["SITE_INDEX"]]<=23:
 					row[fdic["AU"]]=162
-				elif 23.1<row[fdic["SITE_INDEX"]]:
+				elif 23<row[fdic["SITE_INDEX"]]:
 					row[fdic["AU"]]=163
 
 		elif row[fdic["TSA_NUMBER_DESCRIPTION"]] == "Williams Lake TSA": #this works (April 25)
@@ -280,10 +220,7 @@ with arcpy.da.UpdateCursor(fc, fl) as cursor:
 						if row[fdic["SITE_INDEX"]]<7:
 							row[fdic["AU"]]=805
 				elif row[fdic["SPECIES_PCT_1"]]<40:
-					if row[fdic["UWR_NUMBER"]] not in ['',None]:
-						if row[fdic["SITE_INDEX"]]>=7:
-							row[fdic["AU"]]=105
-					elif row[fdic["UWR_NUMBER"]] in ['',None]:
+					if row[fdic["UWR_NUMBER"]] in ['',None]:
 						if 7<=row[fdic["SITE_INDEX"]]<12:
 							if row[fdic["BEC_ZONE_CODE"]] not in ['IDF','SBPS'] :
 								row[fdic["AU"]]=108
@@ -477,7 +414,7 @@ with arcpy.da.UpdateCursor(fc, fl) as cursor:
 				if row[fdic["SITE_INDEX"]]<10:
 					row[fdic["AU"]]=11
 				elif 15>row[fdic["SITE_INDEX"]]>=10:
-					row[fdic["AU"]]=12                    
+					row[fdic["AU"]]=12
 				elif 20>row[fdic["SITE_INDEX"]]>=15:
 					row[fdic["AU"]]=13
 				elif row[fdic["SITE_INDEX"]]>=20:
@@ -486,7 +423,7 @@ with arcpy.da.UpdateCursor(fc, fl) as cursor:
 				if row[fdic["SITE_INDEX"]]<10:
 					row[fdic["AU"]]=21
 				elif 15>row[fdic["SITE_INDEX"]]>=10:
-					row[fdic["AU"]]=22                    
+					row[fdic["AU"]]=22
 				elif 20>row[fdic["SITE_INDEX"]]>=15:
 					row[fdic["AU"]]=23
 				elif row[fdic["SITE_INDEX"]]>=20:
@@ -519,111 +456,57 @@ with arcpy.da.UpdateCursor(fc, fl) as cursor:
 				elif row[fdic["SITE_INDEX"]]>=20:
 					row[fdic["AU"]]=54
 		elif row[fdic["TSA_NUMBER_DESCRIPTION"]] == "Kamloops TSA":
-			if row[fdic["Current_Year"]]<141:
-				if row[fdic["SPECIES_CD_1"]] in DougFir:
-					if row[fdic["BEC_ZONE_CODE"]] in "PP"+"BG":
+			if row[fdic["SPECIES_CD_1"]] in DougFir:
+				if row[fdic["BEC_ZONE_CODE"]] in "PP"+"BG":
+					row[fdic["AU"]]=1
+				elif row[fdic["BEC_ZONE_CODE"]]== "IDF":
+					if row[fdic["BEC_SUBZONE"]] in "dc"+"dh"+"dm"+"dv"+"dvw"+"dw"+"mc"+"mh"+"mm"+"mmp"+"mw"+"un"+"vk"+"wc"+"wcp"+"wcw"+"wk"+"xc"+"xcw"+"xh"+"xk"+"xm"+"xv"+"xvp"+"xvw"+"xw":
 						row[fdic["AU"]]=1
-					elif row[fdic["BEC_ZONE_CODE"]]== "IDF":
-						if row[fdic["BEC_SUBZONE"]] in "dc"+"dh"+"dm"+"dv"+"dvw"+"dw"+"mc"+"mh"+"mm"+"mmp"+"mw"+"un"+"vk"+"wc"+"wcp"+"wcw"+"wk"+"xc"+"xcw"+"xh"+"xk"+"xm"+"xv"+"xvp"+"xvw"+"xw":
+					elif row[fdic["BEC_SUBZONE"]] == "dk":
+						if row[fdic["BEC_VARIANT"]] in "1"+"3"+"4":
 							row[fdic["AU"]]=1
-						elif row[fdic["BEC_SUBZONE"]] == "dk":
-							if row[fdic["BEC_VARIANT"]] in "1"+"3"+"4":
-								row[fdic["AU"]]=1
-							elif row[fdic["BEC_VARIANT"]]=="2":
-								if row[fdic["SPECIES_CD_2"]] not in ["H"+"HM"+"HW" + "CW"+"YC"+ "B"+"BA"+"BG"+"BL" + "PL" + "PLI"]:
-									row[fdic["AU"]]=2
-					elif row[fdic["BEC_ZONE_CODE"]] in "ESSF"+"ICH"+"IMA"+"MS"+"SBPS"+"SBS":
-						if row[fdic["SITE_INDEX"]]>15:
-							row[fdic["AU"]]=3
-						elif row[fdic["SITE_INDEX"]]<=15:
-							row[fdic["AU"]]=5
-					elif row[fdic["BEC_ZONE_CODE"]] =="MS":
-						if row[fdic["SPECIES_CD_2"]] not in ["H"+"HM"+"HW"+ "CW"+"YC"+ "B"+"BA"+"BG"+"BL" + "PL" + "PLI"]:
-							row[fdic["AU"]]=2
-				elif row[fdic["SPECIES_CD_1"]] in Cedar:
-					if row[fdic["SITE_INDEX"]]>17:
-						row[fdic["AU"]]=7
-					elif row[fdic["SITE_INDEX"]]<=17:
-						row[fdic["AU"]]=8
-				elif row[fdic["SPECIES_CD_1"]] in Hem:
-					if row[fdic["SITE_INDEX"]]>16:
-						row[fdic["AU"]]=9
-					elif row[fdic["SITE_INDEX"]]<=16:
-						row[fdic["AU"]]=10
-				elif row[fdic["SPECIES_CD_1"]] in Bal:
-					if row[fdic["SITE_INDEX"]]>13:
-						row[fdic["AU"]]= 210 # was 11
-					elif row[fdic["SITE_INDEX"]]<=13:
-						row[fdic["AU"]]=212 # was 13
-				elif row[fdic["SPECIES_CD_1"]] in Spruce:
-					if row[fdic["SITE_INDEX"]]>14:
-						row[fdic["AU"]]=214 # was 15
-					elif row[fdic["SITE_INDEX"]]<=14:
-						row[fdic["AU"]]=216 # was 17
-				elif row[fdic["SPECIES_CD_1"]] in Pine:
-					if row[fdic["SITE_INDEX"]]>14:
-						row[fdic["AU"]]=19
-					elif row[fdic["SITE_INDEX"]]<=14:
-						row[fdic["AU"]]=217 # was 21
-				elif row[fdic["SPECIES_CD_1"]] in Aspen:
-					row[fdic["AU"]] = 700
-				elif row[fdic["SPECIES_CD_1"]] in Larch:
-					row[fdic["AU"]]=701
-				elif row[fdic["SPECIES_CD_1"]] in Birch:
-					row[fdic["AU"]]=702
-			elif row[fdic["Current_Year"]]>=141:
-				if row[fdic["SPECIES_CD_1"]] in DougFir:
-					if row[fdic["BEC_ZONE_CODE"]] in "PP"+"BG":
-						row[fdic["AU"]]=1
-					elif row[fdic["BEC_ZONE_CODE"]]== "IDF":
-						if row[fdic["BEC_SUBZONE"]] in "dc"+"dh"+"dm"+"dv"+"dvw"+"dw"+"mc"+"mh"+"mm"+"mmp"+"mw"+"un"+"vk"+"wc"+"wcp"+"wcw"+"wk"+"xc"+"xcw"+"xh"+"xk"+"xm"+"xv"+"xvp"+"xvw"+"xw":
-							row[fdic["AU"]]=1
-						elif row[fdic["BEC_SUBZONE"]] == "dk":
-							if row[fdic["BEC_VARIANT"]] in "1"+"3"+"4":
-								row[fdic["AU"]]=1
-					elif row[fdic["BEC_ZONE_CODE"]] in "ESSF"+"ICH"+"IMA"+"MS"+"SBPS"+"SBS":
-						if row[fdic["SITE_INDEX"]]>15:
-							row[fdic["AU"]]=4
-						elif row[fdic["SITE_INDEX"]]<=15:
-							row[fdic["AU"]]=6
-					if row[fdic["SPECIES_CD_2"]] not in ["H"+"HM"+"HW"+ "CW"+"YC"+ "B"+"BA"+"BG"+"BL" + "PL"+ "PLI"]:
-						if row[fdic["BEC_ZONE_CODE"]] =="IDF":
-							if row[fdic["BEC_SUBZONE"]]=="dk":
-								if row[fdic["BEC_VARIANT"]]=="2":
-									row[fdic["AU"]]=2
-						elif row[fdic["BEC_ZONE_CODE"]] == "MS":
-							row[fdic["AU"]]=2
-				elif row[fdic["SPECIES_CD_1"]] in Bal:
-					if row[fdic["SITE_INDEX"]]>13:
-						row[fdic["AU"]]=211 # was 12
-					elif row[fdic["SITE_INDEX"]]<=13:
-						row[fdic["AU"]]=213 # was 14
-				elif row[fdic["SPECIES_CD_1"]] in Spruce:
-					if row[fdic["SITE_INDEX"]]>14:
-						row[fdic["AU"]]=215 # was 16
-					elif row[fdic["SITE_INDEX"]]<=14:
-						row[fdic["AU"]]=18
-				elif row[fdic["SPECIES_CD_1"]] in Pine:
-					if row[fdic["SITE_INDEX"]]>14:
-						row[fdic["AU"]]=20
-					elif row[fdic["SITE_INDEX"]]<=14:
-						row[fdic["AU"]]=218 # was 22
-				elif row[fdic["SPECIES_CD_1"]] in Cedar:
-					if row[fdic["SITE_INDEX"]]>17:
-						row[fdic["AU"]]=219 # was 32
-					elif row[fdic["SITE_INDEX"]]<=17:
-						row[fdic["AU"]]=220 # was 33
-				elif row[fdic["SPECIES_CD_1"]] in Hem:
-					if row[fdic["SITE_INDEX"]]>16:
-						row[fdic["AU"]]=221 # was 34
-					elif row[fdic["SITE_INDEX"]]<=16:
-						row[fdic["AU"]]=35
-				elif row[fdic["SPECIES_CD_1"]] in Aspen:
-					row[fdic["AU"]] = 700
-				elif row[fdic["SPECIES_CD_1"]] in Larch:
-					row[fdic["AU"]]=701
-				elif row[fdic["SPECIES_CD_1"]] in Birch:
-					row[fdic["AU"]]=702
+						elif row[fdic["BEC_VARIANT"]]=="2":
+							if row[fdic["SPECIES_CD_2"]] not in ["H"+"HM"+"HW" + "CW"+"YC"+ "B"+"BA"+"BG"+"BL" + "PL" + "PLI"]:
+								row[fdic["AU"]]=2
+				elif row[fdic["BEC_ZONE_CODE"]] in "ESSF"+"ICH"+"IMA"+"MS"+"SBPS"+"SBS":
+					if row[fdic["SITE_INDEX"]]>15:
+						row[fdic["AU"]]=3
+					elif row[fdic["SITE_INDEX"]]<=15:
+						row[fdic["AU"]]=5
+				elif row[fdic["BEC_ZONE_CODE"]] =="MS":
+					if row[fdic["SPECIES_CD_2"]] not in ["H"+"HM"+"HW"+ "CW"+"YC"+ "B"+"BA"+"BG"+"BL" + "PL" + "PLI"]:
+						row[fdic["AU"]]=2
+			elif row[fdic["SPECIES_CD_1"]] in Cedar:
+				if row[fdic["SITE_INDEX"]]>17:
+					row[fdic["AU"]]=7
+				elif row[fdic["SITE_INDEX"]]<=17:
+					row[fdic["AU"]]=8
+			elif row[fdic["SPECIES_CD_1"]] in Hem:
+				if row[fdic["SITE_INDEX"]]>16:
+					row[fdic["AU"]]=9
+				elif row[fdic["SITE_INDEX"]]<=16:
+					row[fdic["AU"]]=10
+			elif row[fdic["SPECIES_CD_1"]] in Bal:
+				if row[fdic["SITE_INDEX"]]>13:
+					row[fdic["AU"]]= 210 # was 11
+				elif row[fdic["SITE_INDEX"]]<=13:
+					row[fdic["AU"]]=212 # was 13
+			elif row[fdic["SPECIES_CD_1"]] in Spruce:
+				if row[fdic["SITE_INDEX"]]>14:
+					row[fdic["AU"]]=15
+				elif row[fdic["SITE_INDEX"]]<=14:
+					row[fdic["AU"]]=216 # was 17
+			elif row[fdic["SPECIES_CD_1"]] in Pine:
+				if row[fdic["SITE_INDEX"]]>14:
+					row[fdic["AU"]]=19
+				elif row[fdic["SITE_INDEX"]]<=14:
+					row[fdic["AU"]]=217 # was 21
+			elif row[fdic["SPECIES_CD_1"]] in Aspen:
+				row[fdic["AU"]] = 700
+			elif row[fdic["SPECIES_CD_1"]] in Larch:
+				row[fdic["AU"]]=701
+			elif row[fdic["SPECIES_CD_1"]] in Birch:
+				row[fdic["AU"]]=702
 
 		cursor.updateRow(row)
 print ('It took ', round((time.time()-Start)/60,1), " minutes to run this script.")
